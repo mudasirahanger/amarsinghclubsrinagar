@@ -34,8 +34,10 @@ class AdminPanelProvider extends PanelProvider
                 return 'Amar Singh Club Admin';
             })
             ->renderHook(
-                \Filament\View\PanelsRenderHook::FOOTER,
-                fn (): string => '',
+                \Filament\View\PanelsRenderHook::SIDEBAR_NAV_END,
+                fn (): string => \Illuminate\Support\Facades\Blade::render(
+                    '<div class="px-6 py-4 text-xs text-gray-500 font-medium text-center">Version {{ \App\Models\AppSetting::getValue(\'minimum_app_version\', \'1.0.0\') }}</div>'
+                ),
             )
             ->login()
             ->colors([
