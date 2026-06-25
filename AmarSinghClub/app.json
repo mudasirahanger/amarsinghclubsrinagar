@@ -33,6 +33,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
+      },
+      "notification": {
+        "icon": "./assets/images/logo.png",
+        "color": "#ffffff"
       }
     },
     "web": {
