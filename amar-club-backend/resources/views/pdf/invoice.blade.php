@@ -81,7 +81,13 @@
 <body>
 
     <div class="header text-center">
-        <h2>AMAR SINGH CLUB</h2>
+        <h2>{{ \App\Models\AppSetting::getValue('club_name', 'AMAR SINGH CLUB') }}</h2>
+        @if(\App\Models\AppSetting::getValue('club_address'))
+            <p>{{ \App\Models\AppSetting::getValue('club_address') }}</p>
+        @endif
+        @if(\App\Models\AppSetting::getValue('gst_number'))
+            <p>GSTIN: {{ \App\Models\AppSetting::getValue('gst_number') }}</p>
+        @endif
         <p>Order #: {{ $order->id }}</p>
         <p>Date: {{ $order->created_at->format('d M Y, h:i A') }}</p>
         <p>Member: {{ $order->user->name ?? 'Guest' }}</p>

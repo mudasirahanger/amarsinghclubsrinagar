@@ -29,6 +29,9 @@ class ManageAppSettings extends Page implements HasForms
     public function mount(): void
     {
         $this->form->fill([
+            'club_name' => AppSetting::getValue('club_name', 'Amar Singh Club Admin'),
+            'club_address' => AppSetting::getValue('club_address', ''),
+            'gst_number' => AppSetting::getValue('gst_number', ''),
             'maintenance_mode' => AppSetting::getValue('maintenance_mode', 'false') === 'true',
             'minimum_app_version' => AppSetting::getValue('minimum_app_version', '1.0.0'),
             'app_store_url' => AppSetting::getValue('app_store_url', ''),
@@ -40,11 +43,26 @@ class ManageAppSettings extends Page implements HasForms
     {
         return $schema
             ->schema([
-                Toggle::make('maintenance_mode')
-                    ->label('Maintenance Mode')
-                    ->helperText('If enabled, the mobile app will show a maintenance screen and block logins.'),
-                
-                TextInput::make('minimum_app_version')
+                \Filament\Forms\Components\Section::make('General Information')
+                    ->schema([
+                        TextInput::make('club_name')
+                            ->label('Admin Title / Club Name')
+                            ->required(),
+                        TextInput::make('gst_number')
+                            ->label('GST Number')
+                            ->placeholder('e.g. 01AAAAA0000A1Z5'),
+                        \Filament\Forms\Components\Textarea::make('club_address')
+                            ->label('Club Address')
+                            ->rows(2),
+                    ]),
+
+                \Filament\Forms\Components\Section::make('Mobile App Settings')
+                    ->schema([
+                        Toggle::make('maintenance_mode')
+                            ->label('Maintenance Mode')
+                            ->helperText('If enabled, the mobile app will show a maintenance screen and block logins.'),
+                        
+                        TextInput::make('minimum_app_version')
                     ->label('Minimum App Version')
                     ->required()
                     ->helperText('e.g., 1.0.0. Users with older versions will be forced to update.'),
@@ -58,6 +76,7 @@ class ManageAppSettings extends Page implements HasForms
                     ->label('Google Play Store URL')
                     ->url()
                     ->helperText('Link to the Google Play Store. Used by the "Update Required" screen.'),
+                    ])
             ])
             ->statePath('data');
     }
@@ -77,6 +96,10 @@ class ManageAppSettings extends Page implements HasForms
     {
         $data = $this->form->getState();
 
+        AppSetting::setValue('club_name', $data['club_name']);
+        AppSetting::setValue('club_address', $data['club_address'] ?? '');
+        AppSetting::setValue('gst_number', $data['gst_number'] ?? '');
+        
         AppSetting::setValue('maintenance_mode', $data['maintenance_mode'] ? 'true' : 'false');
         AppSetting::setValue('minimum_app_version', $data['minimum_app_version']);
         AppSetting::setValue('app_store_url', $data['app_store_url'] ?? '');

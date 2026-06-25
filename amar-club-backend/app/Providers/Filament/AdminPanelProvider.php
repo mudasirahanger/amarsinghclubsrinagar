@@ -25,7 +25,14 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->brandName('Amar Singh Club Admin')
+            ->brandName(function () {
+                try {
+                    if (\Illuminate\Support\Facades\Schema::hasTable('app_settings')) {
+                        return \App\Models\AppSetting::getValue('club_name', 'Amar Singh Club Admin');
+                    }
+                } catch (\Exception $e) {}
+                return 'Amar Singh Club Admin';
+            })
             ->renderHook(
                 \Filament\View\PanelsRenderHook::FOOTER,
                 fn (): string => '',
