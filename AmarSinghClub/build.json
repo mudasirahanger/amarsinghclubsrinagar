@@ -1,0 +1,51 @@
+{
+  "id": "1db9f28f-896b-48c0-b7a4-67e63b46e822",
+  "status": "ERRORED",
+  "platform": "IOS",
+  "error": {
+    "errorCode": "XCODE_BUILD_ERROR",
+    "message": "The \"Run fastlane\" step failed because of an error in the Xcode build process. We automatically detected following errors in your Xcode build logs:\n- 'folly/coro/Coroutine.h' file not found\nRefer to \"Xcode Logs\" below for additional, more detailed logs."
+  },
+  "artifacts": {
+    "xcodeBuildLogsUrl": "https://storage.googleapis.com/eas-workflows-production/logs/bb6dc738-294b-41f2-bb36-834b57d431bd/1db9f28f-896b-48c0-b7a4-67e63b46e822/2026-06-23T12%3A50%3A51Z-1db9f28f-896b-48c0-b7a4-67e63b46e822-xcode.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260623%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260623T141416Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=84389ca8cc2e17a3e7c30bba40b9089a587bab2db3ef64d651c747bbaefccca658b4642f093dc03b6c7f459e99ad745cadb23ede6f7ae8cabcc7ad651230a86be2c6c5a91bac7272300fbd1da065de8edab45e561ab81d1b99bce02d92ea08d7ecff13876446bd2d6023b109b9405e0d0251ea579983d6372b1a4274493ee7badf9b21b2e579b3f428fbb06c3a8069003722e9da30c21b580c7fee4710c4d76b993d35824fa12918294a4b3c603feeaeef01ee0f6f87fb850562ab9c758246d842232e25d9601f7558fb8357d4631874d8f6244291ba2c5bb93c5e2bde4206f68cdf9fcb16fc804e9658d23dc8402c9478e157da0906ecef9d5bffff59c483fc"
+  },
+  "fingerprint": {
+    "id": "019ef488-7115-7c60-8a51-15addd28bcb3",
+    "hash": "09ed4e716780194475df2f4b2f5f8b513fbecaed"
+  },
+  "initiatingActor": {
+    "id": "b83c435f-35b7-4cfa-b327-846e3b3fe862",
+    "displayName": "mudasirahanger"
+  },
+  "logFiles": [
+    "https://storage.googleapis.com/eas-workflows-production/logs/bb6dc738-294b-41f2-bb36-834b57d431bd/1db9f28f-896b-48c0-b7a4-67e63b46e822/2026-06-23T12%3A50%3A51Z-1db9f28f-896b-48c0-b7a4-67e63b46e822-xcode.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260623%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260623T141416Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=84389ca8cc2e17a3e7c30bba40b9089a587bab2db3ef64d651c747bbaefccca658b4642f093dc03b6c7f459e99ad745cadb23ede6f7ae8cabcc7ad651230a86be2c6c5a91bac7272300fbd1da065de8edab45e561ab81d1b99bce02d92ea08d7ecff13876446bd2d6023b109b9405e0d0251ea579983d6372b1a4274493ee7badf9b21b2e579b3f428fbb06c3a8069003722e9da30c21b580c7fee4710c4d76b993d35824fa12918294a4b3c603feeaeef01ee0f6f87fb850562ab9c758246d842232e25d9601f7558fb8357d4631874d8f6244291ba2c5bb93c5e2bde4206f68cdf9fcb16fc804e9658d23dc8402c9478e157da0906ecef9d5bffff59c483fc",
+    "https://storage.googleapis.com/eas-workflows-production/logs/bb6dc738-294b-41f2-bb36-834b57d431bd/1db9f28f-896b-48c0-b7a4-67e63b46e822/2026-06-23T12%3A50%3A51Z-b006367f-a1af-4d29-b096-d1ac1291b587.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260623%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260623T141417Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=1e16fa23580d590a1cdee2b1ca6171fd19f0006f6e28e485fead3ba6711f306d3385b0747d026da22672f7fb8b5bf34b17d38df06d7b0b906657597472365dccecc1c7f9d537b2adfa5ba48c3948ac2507c432509839f70eec420391cc731d35b6baa622f081f49e19c277131ff10436dc0252082b6b3a5b5846d2bdaa0bcd251d32b1b0876d6131f25de916389395c6dd7d736f75ea0ba33a36c1872f40f230dbce0aee142b85f8caee9e66f45fd8c520be6cff04bd216390c15bcf301093580ac2d25fb6516ab64246f7f8268264b69b0114c99177fe045e698f2a9e40c836e84b3551bc672a1597d1c7860b374ce3abc55ce02409f3f0c6c35f5145fbedcc"
+  ],
+  "project": {
+    "id": "bb6dc738-294b-41f2-bb36-834b57d431bd",
+    "name": "amar-singh-app",
+    "slug": "amar-singh-app",
+    "ownerAccount": {
+      "id": "f026751f-3c22-49b2-b7df-9b80d82b160a",
+      "name": "mudasirahanger"
+    }
+  },
+  "distribution": "STORE",
+  "buildProfile": "production",
+  "sdkVersion": "54.0.0",
+  "appVersion": "7.0.0",
+  "appBuildVersion": "18",
+  "gitCommitHash": "5705b427f35e587f234567779adeecc8c703a0f1",
+  "gitCommitMessage": "fix: update react-native-reanimated patch for RN 0.81 (Systrace TRACE_TAG_REACT_JAVA_BRIDGE)",
+  "priority": "NORMAL",
+  "createdAt": "2026-06-23T12:50:43.050Z",
+  "updatedAt": "2026-06-23T12:55:49.278Z",
+  "completedAt": "2026-06-23T12:55:44.912Z",
+  "expirationDate": "2026-07-23T12:50:43.089Z",
+  "isForIosSimulator": false,
+  "metrics": {
+    "buildWaitTime": 2392,
+    "buildQueueTime": 45470,
+    "buildDuration": 254000
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "cli": {
+    "version": ">= 18.8.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m-medium"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "node": "20.11.0",
+      "ios": {
+        "resourceClass": "m-medium"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "node": "20.11.0",
+      "ios": {
+        "resourceClass": "m-medium"
+      },
+      "env": {
+        "EAS_BUILD_NO_EXPO_GO_WARNING": "true"
+      }
+    },
+    "e2e-simulator": {
+      "extends": "development",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "e2e-apk": {
+      "extends": "production",
+      "android": {
+        "buildType": "apk"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

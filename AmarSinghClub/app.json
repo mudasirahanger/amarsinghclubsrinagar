@@ -1,0 +1,87 @@
+{
+  "expo": {
+    "name": "AmarSinghClub",
+    "slug": "amar-singh-app",
+    "version": "7.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": false,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.associatedmedia.amarsinghclub",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Amar Singh Club needs FaceID to securely log you into your membership account.",
+        "NSCameraUsageDescription": "Amar Singh Club needs camera access to scan QR codes for table payments.",
+        "NSPhotoLibraryUsageDescription": "Amar Singh Club needs access to your photo library so you can save payment receipts or upload a profile picture.",
+        "ITSAppUsesNonExemptEncryption": false,
+        "LSApplicationQueriesSchemes": ["paytm", "gpay", "phonepe", "upi"]
+      }
+    },
+    "android": {
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.associatedmedia.amarsinghclub",
+      "permissions": [
+        "USE_BIOMETRIC",
+        "USE_FINGERPRINT",
+        "android.permission.INTERNET",
+        "android.permission.CAMERA",
+        "android.permission.VIBRATE"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "./plugins/withAndroid16KB",
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1",
+            "ccxxLanguageStandard": "c++20",
+            "useFrameworks": "static"
+          },
+          "android": {
+            "minSdkVersion": 26,
+            "targetSdkVersion": 35,
+            "compileSdkVersion": 35
+          }
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Amar Singh Club needs camera access to scan QR codes for table payments."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Amar Singh Club needs FaceID to securely log you into your membership account."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/logo.png",
+          "color": "#ffffff",
+          "sounds": []
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bb6dc738-294b-41f2-bb36-834b57d431bd"
+      }
+    }
+  }
+}
