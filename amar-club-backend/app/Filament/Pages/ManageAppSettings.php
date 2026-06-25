@@ -43,7 +43,7 @@ class ManageAppSettings extends Page implements HasForms
     {
         return $schema
             ->schema([
-                \Filament\Forms\Components\Section::make('General Information')
+                \Filament\Schemas\Components\Section::make('General Information')
                     ->schema([
                         TextInput::make('club_name')
                             ->label('Admin Title / Club Name')
@@ -56,7 +56,7 @@ class ManageAppSettings extends Page implements HasForms
                             ->rows(2),
                     ]),
 
-                \Filament\Forms\Components\Section::make('Mobile App Settings')
+                \Filament\Schemas\Components\Section::make('Mobile App Settings')
                     ->schema([
                         Toggle::make('maintenance_mode')
                             ->label('Maintenance Mode')
