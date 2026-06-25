@@ -34,22 +34,10 @@ class Accounting extends Page
 
     public function exportMargAction(): Action
     {
-        return \pxlrbt\FilamentExcel\Actions\Pages\ExportAction::make('exportMarg')
+        return ExportAction::make('exportMarg')
             ->label('Download Marg ERP Export')
             ->icon('heroicon-o-document-arrow-down')
             ->color('success')
-            ->exports([
-                \pxlrbt\FilamentExcel\Exports\ExcelExport::make('marg_export')
-                    ->fromModel(\App\Models\Transaction::class)
-                    ->withFilename('Marg_Transactions_' . date('Y-m-d'))
-                    ->withColumns([
-                        \pxlrbt\FilamentExcel\Columns\Column::make('created_at')->heading('Voucher Date')->format('Y-m-d'),
-                        \pxlrbt\FilamentExcel\Columns\Column::make('transaction_id')->heading('Voucher Number'),
-                        \pxlrbt\FilamentExcel\Columns\Column::make('user.name')->heading('Ledger Name'),
-                        \pxlrbt\FilamentExcel\Columns\Column::make('type')->heading('Voucher Type'),
-                        \pxlrbt\FilamentExcel\Columns\Column::make('amount')->heading('Amount'),
-                        \pxlrbt\FilamentExcel\Columns\Column::make('description')->heading('Narration'),
-                    ])
-            ]);
+            ->exporter(\App\Filament\Exports\MargExporter::class);
     }
 }
