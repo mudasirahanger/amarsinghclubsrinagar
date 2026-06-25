@@ -13,7 +13,7 @@ interface POSAlertModalProps {
 
 export default function POSAlertModal({ visible, amount, isLoading, onPay, onCancel, onDismiss }: POSAlertModalProps) {
   return (
-    <Modal visible={visible} transparent={true} animationType="fade">
+    <Modal visible={visible} transparent={true} animationType="fade" onRequestClose={onDismiss}>
       <View style={{ ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0, 0, 0, 0.85)', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <View className="bg-background w-full rounded-3xl p-8 items-center shadow-2xl border border-outline-variant/10">
           

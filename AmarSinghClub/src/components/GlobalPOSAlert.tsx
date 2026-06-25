@@ -4,6 +4,7 @@ import POSAlertModal from './POSAlertModal';
 import { walletService } from '../services/walletService';
 import Toast from 'react-native-toast-message';
 import * as LocalAuthentication from 'expo-local-authentication';
+import { Vibration } from 'react-native';
 
 export default function GlobalPOSAlert() {
   const [posAlert, setPosAlert] = useState<{ order_id: string; amount: number } | null>(null);
@@ -37,6 +38,13 @@ export default function GlobalPOSAlert() {
       if (triggerSub) triggerSub.remove();
     };
   }, []);
+
+  useEffect(() => {
+    if (posAlert) {
+      // Vibrate pattern: 0ms delay, 500ms vibrate, 200ms pause, 500ms vibrate
+      Vibration.vibrate([0, 500, 200, 500]);
+    }
+  }, [posAlert]);
 
   const handlePayPosBill = async () => {
     if (!posAlert) return;
@@ -74,7 +82,6 @@ export default function GlobalPOSAlert() {
           DeviceEventEmitter.emit('refresh_wallet');
       });
     } catch (error: any) {
-      setPosAlert(null);
       setTimeout(() => {
         const errorMessage = error?.response?.data?.error || error?.response?.data?.message || 'Insufficient balance or network error.';
         Toast.show({
@@ -104,7 +111,6 @@ export default function GlobalPOSAlert() {
           DeviceEventEmitter.emit('refresh_wallet');
       });
     } catch (error: any) {
-      setPosAlert(null);
       setTimeout(() => {
         const errorMessage = error?.response?.data?.error || error?.response?.data?.message || 'Could not cancel the order.';
         Toast.show({
