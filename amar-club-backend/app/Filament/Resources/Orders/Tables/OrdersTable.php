@@ -46,14 +46,29 @@ class OrdersTable
                     ->icon('heroicon-m-printer')
                     ->url(fn (\App\Models\Order $record) => route('invoice.print', $record))
                     ->openUrlInNewTab(),
-                \Filament\Actions\RestoreAction::make(),
-                \Filament\Actions\ForceDeleteAction::make(),
+                \Filament\Actions\Action::make('archive')
+                    ->label('Delete')
+                    ->icon('heroicon-m-trash')
+                    ->color('danger')
+                    ->requiresConfirmation()
+                    ->modalHeading('Archive Order')
+                    ->modalDescription('Are you sure you want to delete this order? It will be archived.')
+                    ->modalSubmitActionLabel('Yes, delete it')
+                    ->action(function (\App\Models\Order $record) {
+                        $record->update(['status' => 'archived']);
+                        \App\Models\Transaction::where('reference_id', 'ORD-' . $record->id)->get()->each->delete();
+                        if ($record->user) {
+                            foreach ($record->user->notifications as $notification) {
+                                if (isset($notification->data['order_id']) && $notification->data['order_id'] == $record->id) {
+                                    $notification->delete();
+                                }
+                            }
+                        }
+                        \Filament\Notifications\Notification::make()->title('Order archived')->success()->send();
+                    }),
             ])
             ->bulkActions([
                 \Filament\Actions\BulkActionGroup::make([
-                    \Filament\Actions\DeleteBulkAction::make(),
-                    \Filament\Actions\ForceDeleteBulkAction::make(),
-                    \Filament\Actions\RestoreBulkAction::make(),
                     \pxlrbt\FilamentExcel\Actions\ExportBulkAction::make(),
                 ]),
             ])

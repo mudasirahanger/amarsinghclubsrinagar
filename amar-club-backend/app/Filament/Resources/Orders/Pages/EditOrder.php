@@ -13,7 +13,27 @@ class EditOrder extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            \Filament\Actions\Action::make('archive')
+                ->label('Delete')
+                ->icon('heroicon-m-trash')
+                ->color('danger')
+                ->requiresConfirmation()
+                ->modalHeading('Archive Order')
+                ->modalDescription('Are you sure you want to delete this order? It will be archived.')
+                ->modalSubmitActionLabel('Yes, delete it')
+                ->action(function (\App\Models\Order $record) {
+                    $record->update(['status' => 'archived']);
+                    \App\Models\Transaction::where('reference_id', 'ORD-' . $record->id)->get()->each->delete();
+                    if ($record->user) {
+                        foreach ($record->user->notifications as $notification) {
+                            if (isset($notification->data['order_id']) && $notification->data['order_id'] == $record->id) {
+                                $notification->delete();
+                            }
+                        }
+                    }
+                    \Filament\Notifications\Notification::make()->title('Order archived')->success()->send();
+                    return redirect(\App\Filament\Resources\Orders\OrderResource::getUrl('index'));
+                }),
         ];
     }
 
