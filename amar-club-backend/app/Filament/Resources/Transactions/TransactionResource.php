@@ -22,15 +22,7 @@ class TransactionResource extends Resource
 {
     protected static ?string $model = Transaction::class;
 
-    protected static ?string $slug = 'accounting';
-
-    protected static ?string $navigationLabel = 'Accounting';
-
-    protected static ?string $modelLabel = 'Accounting Record';
-
-    protected static ?string $pluralModelLabel = 'Accounting Records';
-
-    protected static string| BackedEnum|null $navigationIcon = 'heroicon-o-calculator';
+    protected static string| BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Schema $schema): Schema
     {

@@ -15,5 +15,18 @@
             </div>
         </x-filament::section>
 
+        <x-filament::section>
+            <x-slot name="heading">
+                Marg ERP Export
+            </x-slot>
+            <x-slot name="description">
+                Generate and download all transactions formatted for the Marg ERP Bridger import tool.
+            </x-slot>
+
+            <div class="flex flex-col gap-4 mt-4">
+                {{ $this->exportMargAction }}
+            </div>
+        </x-filament::section>
+
     </div>
 </x-filament-panels::page>
