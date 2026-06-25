@@ -264,7 +264,6 @@ export default function ScannerScreen({ navigation }: any) {
 
     } catch (error: any) {
       setIsProcessing(false);
-      setShowPaymentModal(false);
       console.error("Scanner Payment Error:", error.response?.status, error.response?.data);
       const errorMsg = error.response?.data?.error || error.response?.data?.message || error.message || 'Payment processing failed.';
       
@@ -275,9 +274,6 @@ export default function ScannerScreen({ navigation }: any) {
         position: 'top',
         topOffset: 60,
       });
-
-      // Allow the user to scan again after viewing the error
-      setTimeout(() => setScanned(false), 2500);
     }
   };
 
