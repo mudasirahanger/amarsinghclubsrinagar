@@ -11,4 +11,9 @@ class Changelog extends Page
     protected static ?int $navigationSort = 2;
 
     protected string $view = 'filament.pages.changelog';
+
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

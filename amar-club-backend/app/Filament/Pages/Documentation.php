@@ -11,4 +11,9 @@ class Documentation extends Page
     protected static ?int $navigationSort = 1;
 
     protected string $view = 'filament.pages.documentation';
+
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }
